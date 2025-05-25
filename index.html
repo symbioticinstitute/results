@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Achievements - EduTech Pro</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #6366f1;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #1f2937;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray-600: #4b5563;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: var(--light);
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        /* Stats */
+        .stats {
+            background: white;
+            padding: 60px 20px;
+            margin-top: -40px;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover { transform: translateY(-5px); }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        /* Results */
+        .results {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .year-section {
+            margin-bottom: 60px;
+        }
+
+        .year-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .exam-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .student-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .score-item {
+            text-align: center;
+            padding: 15px;
+            background: var(--light);
+            border-radius: 10px;
+        }
+
+        .score-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .subject {
+            background: #f0f9ff;
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .achievement {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 { font-size: 2rem; margin-bottom: 20px; }
+        .cta p { margin-bottom: 30px; opacity: 0.9; }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .btn-white:hover { transform: translateY(-3px); }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .results-grid { grid-template-columns: 1fr; }
+            .score-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">🏆</div>
+                EduTech Pro
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Results</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <a href="#" class="btn">View Results 📊</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Our Achievements</h1>
+        <p>Celebrating outstanding performance in CBSE Board Examinations and competitive exams</p>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📚</div>
+                <span class="stat-number">500+</span>
+                <div>Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <span class="stat-number">98%</span>
+                <div>Pass Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⭐</div>
+                <span class="stat-number">85+</span>
+                <div>Above 90%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <span class="stat-number">25</span>
+                <div>Toppers</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results">
+        <h2 class="section-title">Top Performers</h2>
+        
+        <!-- 2025 Results -->
+        <div class="year-section">
+            <h3 class="year-title">Academic Year 2024-25</h3>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="achievement">🏆 School Topper</div>
+                    <div class="exam-badge">CBSE Class 10</div>
+                    <h4 class="student-name">Priya Sharma</h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <div class="score-value">98.2%</div>
+                            <div>Overall</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-value">491</div>
+                            <div>Total Marks</div>
+                        </div>
+                    </div>
+                    <div class="subjects">
+                        <div class="subject">Math: 100</div>
+                        <div class="subject">Science: 98</div>
+                        <div class="subject">English: 96</div>
+                        <div class="subject">Hindi: 99</div>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="achievement">⭐ Excellence</div>
+                    <div class="exam-badge">CBSE Class 12</div>
+                    <h4 class="student-name">Arjun Patel</h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <div class="score-value">96.8%</div>
+                            <div>Overall</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-value">484</div>
+                            <div>Total Marks</div>
+                        </div>
+                    </div>
+                    <div class="subjects">
+                        <div class="subject">Physics: 97</div>
+                        <div class="subject">Chemistry: 98</div>
+                        <div class="subject">Math: 99</div>
+                        <div class="subject">English: 94</div>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="achievement">🎯 JEE Qualified</div>
+                    <div class="exam-badge">JEE Main 2025</div>
+                    <h4 class="student-name">Ananya Singh</h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <div class="score-value">98.5</div>
+                            <div>Percentile</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-value">245</div>
+                            <div>Score</div>
+                        </div>
+                    </div>
+                    <div class="subjects">
+                        <div class="subject">Physics: 85</div>
+                        <div class="subject">Chemistry: 80</div>
+                        <div class="subject">Math: 80</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2024 Results -->
+        <div class="year-section">
+            <h3 class="year-title">Academic Year 2023-24</h3>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="achievement">🏆 District Topper</div>
+                    <div class="exam-badge">CBSE Class 10</div>
+                    <h4 class="student-name">Rahul Kumar</h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <div class="score-value">99.4%</div>
+                            <div>Overall</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-value">497</div>
+                            <div>Total Marks</div>
+                        </div>
+                    </div>
+                    <div class="subjects">
+                        <div class="subject">Math: 100</div>
+                        <div class="subject">Science: 100</div>
+                        <div class="subject">English: 99</div>
+                        <div class="subject">Hindi: 99</div>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="achievement">⭐ Excellence</div>
+                    <div class="exam-badge">CBSE Class 12</div>
+                    <h4 class="student-name">Sneha Gupta</h4>
+                    <div class="score-grid">
+                        <div class="score-item">
+                            <div class="score-value">97.2%</div>
+                            <div>Overall</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-value">486</div>
+                            <div>Total Marks</div>
+                        </div>
+                    </div>
+                    <div class="subjects">
+                        <div class="subject">Accounts: 98</div>
+                        <div class="subject">Business: 97</div>
+                        <div class="subject">Economics: 96</div>
+                        <div class="subject">English: 95</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Join Our Success Story</h2>
+        <p>Ready to achieve excellence? Start your journey with us today!</p>
+        <a href="#" class="btn-white">Get Started 🚀</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 EduTech Pro. All rights reserved.</p>
+    </footer>
+</body>
+</html>
